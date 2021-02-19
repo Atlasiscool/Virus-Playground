@@ -1,0 +1,52 @@
+services:
+  "a_1":
+    build: ./admin
+    networks:
+      - network_A
+  "a_2":
+    build: ./admin
+    networks:
+      - network_A
+  "bridge_ab":
+    build: ./admin
+    networks:
+      - network_A
+      - network_B
+  "b_1":
+    build: ./admin
+    networks:
+      - network_B
+  "b_2":
+    build: ./admin
+    networks:
+      - network_B
+  "b_3":
+    build: ./admin
+    networks:
+      - network_B
+  "bridge_bc":
+    build: ./admin
+    networks:
+      - network_B
+      - network_C
+  "c_1":
+    build: ./admin
+    networks:
+      - network_C
+
+networks:
+  network_A:
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.0.1.0/24
+  network_B:
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.0.2.0/24
+  network_C:
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.0.3.0/24
