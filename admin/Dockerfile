@@ -3,8 +3,8 @@ FROM ubuntu:latest
 RUN apt update && apt install  openssh-server iproute2 nmap sudo -y
 
 RUN useradd -rm -d /home/ubuntu -s /bin/bash -g root -G sudo -u 1000 test 
-
-RUN  echo 'test:test' | chpasswd
+RUN echo 'test:test' | chpasswd
+RUN echo "ALL            ALL = (ALL) NOPASSWD: ALL" >> /etc/sudoers
 
 COPY .ssh/ /home/ubuntu/.ssh/
 COPY .ssh/virux.pub /home/ubuntu/.ssh/authorized_keys 
