@@ -14,7 +14,7 @@ docker ps
 docker exec -it [container_name] bash
 
 # once inside the container to become a simple user and start having fun
-docker exec -it [container_name] bash
+su test
 ```
 
 You can copy your virus to one of the containers
